@@ -13,8 +13,16 @@ class CircleController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('circle/index.html.twig', [
-            'controller_name' => 'CircleController',
+        $user_input = array(
+            'radius',
+            'circumference',
+            'volume'
+        );
+
+        return $this->render('calculator.html.twig', [
+            'shape' => 'circle',
+            'subtitle' => 'Calculate the diameter of a circle',
+            'user_input' => $user_input
         ]);
     }
 }

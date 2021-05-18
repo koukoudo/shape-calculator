@@ -13,8 +13,15 @@ class TriangleController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('circle/index.html.twig', [
-            'controller_name' => 'TriangleController',
+        $user_input = array(
+            'base',
+            'height'
+        );
+
+        return $this->render('calculator.html.twig', [
+            'shape' => 'triangle',
+            'subtitle' => 'Calculate the surface area of a triangle',
+            'user_input' => $user_input
         ]);
     }
 }
