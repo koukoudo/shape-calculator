@@ -2,43 +2,28 @@
 
 {% block body %}
     {% block input %}
-        <div id="input">
-            {% if shape == 'triangle' %}
+        {{ form(form) }}
+        {# <form action="{{ path(submit_route)}}" method="post">
+            {% for input_field in user_input %}
                 <div class="input-field-wrapper">
-                    <h2>Base</h2>
-                    <input type="range" min="1" max="100" value="50" class="slider triangle-slider" id="slider-base">
-                    <input type="number" min="1" max="100" value="50" class="slider-input" id="slider-input-base">
+                    <h2>{{ input_field.name }}</h2>
+                    <input type="range" min="{{ input_field.min }}" max="{{ input_field.max }}" value="{{ input_field.val }}" step="1" class="slider {{ shape }}-slider slider-{{ input_field.name }}" id="slider-{{ input_field.name }}">
+                    <input type="number" name="{{ input_field.name }}" min="{{ input_field.min }}" max="{{ input_field.max }}" value="{{ input_field.val }}" step="1" class="slider-input {{ shape }}-slider-input slider-{{ input_field.name }}" id="slider-input-{{ input_field.name }}">
                 </div>
-                <div class="input-field-wrapper">
-                    <h2>Height</h2>
-                    <input type="range" min="1" max="100" value="50" class="slider triangle-slider" id="slider-height">
-                    <input type="number" min="1" max="100" value="50" class="slider-input" id="slider-input-height">
-                </div>
-            {% elseif shape == 'circle' %}
-                <div class="input-field-wrapper">
-                    <h2>Radius</h2>
-                    <input type="range" min="1" max="100" value="50" class="slider circle-slider" id="slider-radius">
-                    <input type="number" min="1" max="100" value="50" class="slider-input circle-slider-input" id="slider-input-radius">
-                </div>
-                <div class="input-field-wrapper">
-                    <h2>Circumference</h2>
-                    <input type="range" min="7" max="629" value="300" class="slider circle-slider" id="slider-circumference">
-                    <input type="number" min="7" max="629" value="300" class="slider-input circle-slider-input" id="slider-input-circumference">
-                </div>
-                <div class="input-field-wrapper">
-                    <h2>Volume</h2>
-                    <input type="range" min="5" max="4188791" value="2500000" class="slider circle-slider" id="slider-volume">
-                    <input type="number" min="5" max="4188791" value="2500000" class="slider-input circle-slider-input" id="slider-input-volume">
-                </div>
-             {% endif %}
-        </div>
+            {% endfor %}
+            <input type="submit" value="Calculate"/>
+        </form> #}
     {% endblock %}
     {% block scene %}
         <div id="scene"></div>
     {% endblock %}
-    {% block submit %}
-        <div id="button-submit-wrapper">
-            <button type="button" id="button-submit">Calculate</button>
-        </div>
-    {% endblock %}
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% if shape == 'triangle' %}
+        {{ encore_entry_script_tags('triangle') }}
+    {% elseif shape == 'circle' %}
+        {{ encore_entry_script_tags('circle') }}
+    {% endif %}
+{% endblock %} 
