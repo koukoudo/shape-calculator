@@ -1,6 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <div class="link-home-container">
+        <a class="link-home" href="{{ path('home')}}"><i class="fa fa-arrow-alt-circle-left"></i>back</a>
+    </div>
+
     <div class="container text-center">
         {% if shape == 'circle' %}
             <kbd>The diameter of the circle is <b>{{ result }}</b>.</kbd>

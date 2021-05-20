@@ -1,21 +1,61 @@
 @import "~bootstrap/scss/bootstrap";
+@import '~font-awesome';
 
-
+.link-home-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
 
 .link-home {
-    font-size: xx-large;
-    background-color: #f44336;
+    text-decoration: none;
     color: white;
-    width: 200px;
-    line-height: 200px;
+    font-size: large;
+}
+
+.link-home:hover {
+    font-weight: 600;
+    color: white;
+}
+
+.link-shape {
+    font-size: xx-large;
+    color: white;
     text-align: center;
     text-decoration: none;
     display: inline-block;
 }
 
-.link-home:hover {
+.link-shape:hover {
     background-color: red;
     color: white;
+}
+
+#link-circle {
+    width: 200px;
+    line-height: 200px;
+    background-color: #ee4c41;
+    border-radius: 100%;
+}
+
+#link-circle:hover {
+    background-color: red;
+}
+
+#link-triangle {
+    width: 0; 
+    height: 0; 
+    border-left: 160px solid transparent;
+    border-right: 160px solid transparent;
+    border-bottom: 160px solid #ee4c41;
+}
+
+#link-triangle-text {
+    line-height: 160px;
+    width: 320px;
+    box-sizing: content-box;
+    margin-right: 160px;
+    transform: translateX(-160px);
 }
 
 .btn {
@@ -34,4 +74,8 @@ form {
 
 .form-group {
     margin: 20px;
+}
+
+kbd {
+    background-color: blue;
 }

@@ -1,12 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="fluid-container row">
-        <div class="col text-center">
-            <a class="link-home" href="{{ path('triangle')}}">Triangle</a>
+    <div class="fluid-container row m-0">
+        <div class="col d-flex align-items-center justify-content-end">
+            <div id="link-triangle">
+                <a id="link-triangle-text" class="link-shape" href="{{ path('triangle')}}">Triangle</a>
+            </div>
         </div>
-        <div class="col text-center">
-            <a class="link-home" href="{{ path('circle')}}">Circle</a>
+        <div class="col d-flex align-items-center justify-content-start">
+            <a class="link-shape" id="link-circle" href="{{ path('circle')}}">Circle</a>
         </div>
     </div>
 {% endblock %}
