@@ -4,18 +4,13 @@ namespace App\Entity;
 
 class TriangleSize
 {
-    protected $size;
     protected $base;
     protected $height;
 
-    public function getSize(): int
+    function __construct() 
     {
-        return $this->size;
-    }
-
-    public function setSize(int $size): void
-    {
-        $this->size = $size;
+        $this->base = 5;
+        $this->height = 5;
     }
 
     public function getBase(): int

@@ -4,19 +4,15 @@ namespace App\Entity;
 
 class CircleSize
 {
-    protected $size;
     protected $radius;
     protected $circumference;
     protected $volume;
 
-    public function getSize(): int
+    function __construct() 
     {
-        return $this->size;
-    }
-
-    public function setSize(int $size): void
-    {
-        $this->size = $size;
+        $this->radius = 5;
+        $this->circumference = round(pi()*10);
+        $this->volume = round(2/3*pi()*(10**3));
     }
 
     public function getRadius(): int

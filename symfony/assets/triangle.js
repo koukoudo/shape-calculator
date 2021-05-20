@@ -1,9 +1,10 @@
 import jquery from 'jquery';
 import * as THREE from 'three';
+import logoPath from './images/horus.jpg';
 
 var base = 5;
 var height = 5;
-var xVal, zVal, zValTop, points, input;
+var xVal, zVal, points, input;
 
 function setPoints() {
     xVal = base / 2;
@@ -28,18 +29,22 @@ function setPoints() {
 }
 
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+const texture = new THREE.TextureLoader().load(logoPath);
+scene.background = texture;
+const camera = new THREE.PerspectiveCamera( 75, window.innerHeight / window.innerHeight, 0.1, 1000 );
 
 const renderer = new THREE.WebGLRenderer();
-renderer.setSize( window.innerWidth, window.innerHeight );
-document.body.appendChild( renderer.domElement );
+renderer.setSize( window.innerHeight/2, window.innerHeight/2 );
 
 setPoints();
 const geometry = new THREE.BufferGeometry();
-const material = new THREE.MeshStandardMaterial( { color: 0x00ff00 } );
-material.side = THREE.FrontSide;
-geometry.setFromPoints(points)
-geometry.computeVertexNormals()
+//const texture = new THREE.TextureLoader().load(logoPath);
+// texture.wrapS = THREE.RepeatWrapping;
+// texture.wrapT = THREE.RepeatWrapping;
+// texture.repeat.set( 4, 4 );
+const material = new THREE.MeshPhongMaterial( { color: 0xff0000 } );
+geometry.setFromPoints(points);
+geometry.computeVertexNormals();
 const triangle = new THREE.Mesh( geometry, material );
 scene.add(triangle);
 
@@ -57,7 +62,7 @@ camera.lookAt(0, height / 2, 0);
 function animate() {
 	requestAnimationFrame( animate );
 
-    triangle.scale.set( base/4, height/4, base/4 );
+    triangle.scale.set( base/3, height/3, base/3 );
     triangle.rotation.y += 0.01;
 
 	renderer.render( scene, camera );
@@ -66,21 +71,23 @@ function animate() {
 animate();
 
 jQuery(function(){
-    $('.triangle-slider-input').on('input', function() {
+    $('#scene').append(renderer.domElement);
+
+    $('#triangle_size_base').on('input', function() {
         input = $(this).val();
-        $(this).siblings('.triangle-slider').val(input);
+        if (input <= 10 && input >= 1) {
+            base = input;
+        }
     });
 
-    $('.triangle-slider').on('input', function() {
+    $('#triangle_size_height').on('input', function() {
         input = $(this).val();
-        $(this).siblings('.triangle-slider-input').val(input);
+        if (input <= 10 && input >= 1) {
+            height = input;
+        }
     });
 
-    $('.slider-base').on('input', function() {
-        base = $(this).val();
-    });
-
-    $('.slider-height').on('input', function() {
-        height = $(this).val();
-    });
+    $(window).on('resize', function() {
+        renderer.setSize( window.innerHeight/2, window.innerHeight/2 );
+    })
 });

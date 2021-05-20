@@ -14,6 +14,9 @@ Encore
     // only needed for CDN's or sub-directory deploy
     //.setManifestKeyPrefix('build/')
     .autoProvidejQuery()
+    .enableSassLoader()
+    .enableVersioning()
+
 
     /*
      * ENTRY CONFIG
@@ -23,6 +26,7 @@ Encore
      */
     .addEntry('circle', './assets/circle.js')
     .addEntry('triangle', './assets/triangle.js')
+    .addStyleEntry('global', './assets/styles/global.scss')
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')

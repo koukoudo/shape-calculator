@@ -1,6 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <a href="{{ path('triangle')}}">Triangle</a>
-    <a href="{{ path('circle')}}">Circle</a>
+    <div class="fluid-container row">
+        <div class="col text-center">
+            <a class="link-home" href="{{ path('triangle')}}">Triangle</a>
+        </div>
+        <div class="col text-center">
+            <a class="link-home" href="{{ path('circle')}}">Circle</a>
+        </div>
+    </div>
 {% endblock %}

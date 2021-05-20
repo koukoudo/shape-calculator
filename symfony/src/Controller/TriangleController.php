@@ -7,42 +7,32 @@ use App\Form\Type\TriangleSizeType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 class TriangleController extends AbstractController
 {
     /**
      * @Route("/triangle", name="triangle")
      */
-    public function index(): Response
+    public function index(Request $request): Response
     {
-        $base = (object) ['name' => 'base', 'min' => 1, 'max' => 10, 'val' => 5];
-        $height = (object) ['name' => 'height', 'min' => 1, 'max' => 10, 'val' => 5];
-
-        $user_input = array(
-            $base,
-            $height
-        );
-
         $size = new TriangleSize();
-        $size->setBase(5);
-        $size->setHeight(5);
 
         $form = $this->createForm(TriangleSizeType::class, $size);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $size = $form->getData();
+            $base = $size->getBase();
+            $height = $size->getHeight();
+
+            return $this->redirectToRoute('result', array('shape' => 'triangle', 'base' => $base, 'height' => $height));
+        }
 
         return $this->render('calculator.html.twig', [
             'form' => $form->createView(),
             'shape' => 'triangle',
-            'subtitle' => 'Calculate the surface area of a triangle',
-            'user_input' => $user_input,
-            'submit_route' => 'triangle_result'
+            'subtitle' => 'Calculate the surface area of a triangle.',
         ]);
     }
-
-    // /**
-    //  * @Route("/triangle/result", name="triangle_result")
-    //  */
-    // public function triangleResult(): Response
-    // {
-
-    // }
 }

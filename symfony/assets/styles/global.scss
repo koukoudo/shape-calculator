@@ -1,0 +1,37 @@
+@import "~bootstrap/scss/bootstrap";
+
+
+
+.link-home {
+    font-size: xx-large;
+    background-color: #f44336;
+    color: white;
+    width: 200px;
+    line-height: 200px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.link-home:hover {
+    background-color: red;
+    color: white;
+}
+
+.btn {
+    border-radius: 0;
+    background-color: transparent;
+    color: blue;
+    border: 2px solid blue;
+}
+#circle-size {
+    width: 50%;
+}
+
+form {
+    width: 50%;
+}
+
+.form-group {
+    margin: 20px;
+}

@@ -1,5 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>The result of your calculation is {{ result }} </h1>
+    <div class="container text-center">
+        {% if shape == 'circle' %}
+            <kbd>The diameter of the circle is <b>{{ result }}</b>.</kbd>
+        {% elseif shape == 'triangle' %} 
+            <kbd>The surface area of the triangle is <b>{{ result }}</b>.</kbd>    
+        {% endif %}
+    </div>
 {% endblock %}

@@ -1,22 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {% block input %}
-        {{ form(form) }}
-        {# <form action="{{ path(submit_route)}}" method="post">
-            {% for input_field in user_input %}
-                <div class="input-field-wrapper">
-                    <h2>{{ input_field.name }}</h2>
-                    <input type="range" min="{{ input_field.min }}" max="{{ input_field.max }}" value="{{ input_field.val }}" step="1" class="slider {{ shape }}-slider slider-{{ input_field.name }}" id="slider-{{ input_field.name }}">
-                    <input type="number" name="{{ input_field.name }}" min="{{ input_field.min }}" max="{{ input_field.max }}" value="{{ input_field.val }}" step="1" class="slider-input {{ shape }}-slider-input slider-{{ input_field.name }}" id="slider-input-{{ input_field.name }}">
-                </div>
-            {% endfor %}
-            <input type="submit" value="Calculate"/>
-        </form> #}
-    {% endblock %}
-    {% block scene %}
-        <div id="scene"></div>
-    {% endblock %}
+    <div class="fluid-container d-flex align-items-center justify-content-center">
+        <div class="container d-flex align-items-center justify-content-end">
+            {{ form(form) }}
+        </div>
+        <div class="container" id="scene"></div>
+    </div>
 {% endblock %}
 
 {% block javascripts %}

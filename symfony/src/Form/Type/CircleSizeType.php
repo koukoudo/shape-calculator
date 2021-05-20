@@ -6,6 +6,7 @@ use App\Entity\CircleSize;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\RangeType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -14,25 +15,28 @@ class CircleSizeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('radius', RangeType::class, [
+            ->add('radius', IntegerType::class, [
                 'attr' => [
-                    'class' => 'slider circle-slider slider-radius',
+                    'class' => 'user-input',
                     'min' => 1,
-                    'max' => 10
+                    'max' => 10,
+                    'val' => 5
                 ]
             ])
-            ->add('circumference', RangeType::class, [
+            ->add('circumference', IntegerType::class, [
                 'attr' => [
-                    'class' => 'slider circle-slider slider-circumference',
+                    'class' => 'user-input',
                     'min' => round(2*pi()*1), 
-                    'max' => round(2*pi()*10)
+                    'max' => round(2*pi()*10),
+                    'val' => round(pi()*10)
                 ]
             ])
-            ->add('volume', RangeType::class, [
+            ->add('volume', IntegerType::class, [
                 'attr' => [
-                    'class' => 'slider circle-slider slider-volume',
+                    'class' => 'user-input',
                     'min' => round(4/3*pi()*(1**3)),
-                    'max' => round(4/3*pi()*(10**3))
+                    'max' => round(4/3*pi()*(10**3)),
+                    'val' => round(2/3*pi()*(10**3))
                 ]
             ])
             ->add('calculate', SubmitType::class)
