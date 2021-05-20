@@ -13,8 +13,6 @@ It is composed of two containers:
 
 1. Clone this rep.
 
-2. Set the HTTP_PORT for nginx in the .env file at the project root.
+2. Run `docker-compose up`
 
-3. Run `docker-compose up`
-
-4. Navigate to localhost:{HTTP_PORT} in your browser.
+3. Navigate to localhost:8080 in your browser.
