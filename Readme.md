@@ -4,7 +4,7 @@
 
 ## Description
 
-This is a dockerzied Symfony-based project developed for Horus Music that allows the user to calculate the surface area of a triangle and the diameter of a circle.
+This is a dockerzied Symfony-based project developed for Horus Music that allows the user to calculate the surface area of a triangle and the diameter of a circle. The PHP dependencies are managed ith Composer and the JavaScript dependencies are managed with Yarn. 
 
 It is composed of two containers:
 
@@ -15,6 +15,19 @@ It is composed of two containers:
 
 1. Clone this rep.
 
-2. Run `docker-compose up`
+2. Navigate to the symfony directory.
 
-3. Navigate to localhost:8080 in your browser.
+3. Run the following commands to install dependencies and bundle assets:
+```
+composer install
+yarn install
+yarn encore production
+```
+4. Navigate back to the root directory.
+
+6. Run the following command to compose the project:
+```
+docker-compose up
+```
+
+6. Navigate to localhost:8080 in your browser.
