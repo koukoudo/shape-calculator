@@ -1,21 +1,30 @@
 import jquery from 'jquery';
 import * as THREE from 'three';
-import logoPath from './images/horus.jpg';
+import whiteImagePath from './images/horus_white.jpg';
+import blueImagePath from './images/horus_blue.jpg';
+import logoPath from './images/horus_logo.jpg';
 
 var radius = 5;
 
 const scene = new THREE.Scene();
-scene.background = new THREE.Color( 0xff0000 );
+var texture = new THREE.TextureLoader().load(logoPath);
+scene.background = texture;
 const camera = new THREE.PerspectiveCamera( 75, window.innerHeight / window.innerHeight, 0.1, 1000 );
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerHeight/2, window.innerHeight/2);
 
-const geometry = new THREE.SphereGeometry(1, 50, 50);
-const texture = new THREE.TextureLoader().load(logoPath);
-const material = new THREE.MeshPhongMaterial( { map: texture } );
-const sphere = new THREE.Mesh( geometry, material );
+var geometry = new THREE.SphereGeometry(1, 50, 50);
+texture = new THREE.TextureLoader().load(whiteImagePath);
+var material = new THREE.MeshPhongMaterial( { map: texture } );
+var sphere = new THREE.Mesh( geometry, material );
 scene.add( sphere );
+
+// geometry = new THREE.BoxGeometry(20, 20);
+// var material = new THREE.MeshPhongMaterial( { color: 0xffffff } );
+// var box = new THREE.Mesh( geometry, material );
+// material.side = THREE.DoubleSide;
+// scene.add(box);
 
 const lightPoint = new THREE.PointLight( 0xffffff, 1, 100 );
 lightPoint.position.set( 10, 10, 10 );

@@ -7,9 +7,11 @@
 
     <div class="container text-center">
         {% if shape == 'circle' %}
-            <kbd>The diameter of the circle is <b>{{ result }}</b>.</kbd>
+            <kbd>The diameter of the circle is</kbd>
+            <h1 class="display-1">{{ result }}</h1>
         {% elseif shape == 'triangle' %} 
-            <kbd>The surface area of the triangle is <b>{{ result }}</b>.</kbd>    
+            <kbd>The surface area of the triangle is</kbd>  
+            <h1 class="display-1">{{ result }}</h1>  
         {% endif %}
     </div>
 {% endblock %}

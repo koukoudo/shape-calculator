@@ -16,6 +16,7 @@ Encore
     .autoProvidejQuery()
     .enableSassLoader()
     .enableVersioning()
+    .copyFiles({from: './assets/images'})
 
 
     /*

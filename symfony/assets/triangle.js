@@ -1,6 +1,8 @@
 import jquery from 'jquery';
 import * as THREE from 'three';
-import logoPath from './images/horus.jpg';
+import whiteImagePath from './images/horus_white.jpg';
+import blueImagePath from './images/horus_blue.jpg';
+import logoPath from './images/horus_logo.jpg';
 
 var base = 5;
 var height = 5;
@@ -29,7 +31,7 @@ function setPoints() {
 }
 
 const scene = new THREE.Scene();
-const texture = new THREE.TextureLoader().load(logoPath);
+var texture = new THREE.TextureLoader().load(logoPath);
 scene.background = texture;
 const camera = new THREE.PerspectiveCamera( 75, window.innerHeight / window.innerHeight, 0.1, 1000 );
 
@@ -38,11 +40,11 @@ renderer.setSize( window.innerHeight/2, window.innerHeight/2 );
 
 setPoints();
 const geometry = new THREE.BufferGeometry();
-//const texture = new THREE.TextureLoader().load(logoPath);
+texture = new THREE.TextureLoader().load(whiteImagePath);
 // texture.wrapS = THREE.RepeatWrapping;
 // texture.wrapT = THREE.RepeatWrapping;
 // texture.repeat.set( 4, 4 );
-const material = new THREE.MeshPhongMaterial( { color: 0xff0000 } );
+const material = new THREE.MeshPhongMaterial( { map: texture } );
 geometry.setFromPoints(points);
 geometry.computeVertexNormals();
 const triangle = new THREE.Mesh( geometry, material );

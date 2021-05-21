@@ -11,18 +11,19 @@
     </head>
     <body>
         <div class="fluid-container min-vh-100">
-            <div class="jumbotron text-center fluid-container p-5 bg-dark text-white">
+            <div id="header" class="jumbotron text-center fluid-container p-5 text-white">
                 <h1>SHAPE CALCULATOR</h1>
+                <img id="header-logo" src="{{ asset('build/horus_trans.png') }}">
             </div>
 
             <div class="fluid-container text-center m-5">
-                <h2>{{ subtitle }}</h2>
+                <h2 class="subtitle">{{ subtitle }}</h2>
             </div>
 
             {%block body %}{% endblock %}
         </div>
 
-        <div class="fluid-container bg-dark text-white m-0 p-3">
+        <div id="footer" class="fluid-container text-white m-0 p-4">
                 <p>Created by <b>Nikolaos Anastasopoulos</b> for <b>Horus Music</b>.</p>
         </div>
     </body>
